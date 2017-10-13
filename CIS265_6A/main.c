@@ -42,9 +42,11 @@
 #define MIN_INPUT              -100.0 // Min acceptable  input value.
 #define MAX_INPUT              100.0  // Max accetable input value.
 #define MAXIMUM_INPUT_ATTEMPTS 3      // Max input attempts before aborting.
+#define INSTRUCTIONS           	"Enter two lists of double types of equal size.\n" \
+	                        "The program will calculate a[0]*b[0] + a[1]*b[1] + ... + a[n-1]*b[n-1].\n\n"
 
 // Program validity status, used for exit. 
-enum ExitStatus { FAILURE, SUCCESS };
+enum ExitStatus { SUCCESS, FAILURE };
 
 // Floating point validity check.
 bool isNotNANOrInfinity(const double val) { return (val * 0) == 0; }
@@ -157,8 +159,7 @@ int main(void) {
 	assert(attempts > 0); // Assert attempts valid non-zero, positive number.
 
 	// Display program instructions.
-	fputs("Enter two lists of double types of equal size.\n", stdout);
-	fputs("The program will calculate a[0]*b[0] + a[1]*b[1] + ... + a[n-1]*b[n-1].\n\n", stdout);
+	fputs(INSTRUCTIONS, stdout);
 
 	// Attempt only so many inputs.
 	while (attempts--) {
